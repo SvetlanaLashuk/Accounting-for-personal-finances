@@ -83,7 +83,8 @@ public class ReportActivity extends AppCompatActivity {
         cursor =  db.rawQuery(query, null);*/
 
        //String query = " SELECT * FROM income GROUP BY categoryName ORDER BY categoryName";
-        String query = " SELECT * SUM(incomeSum)FROM income GROUP BY categoryName ORDER BY categoryName";
+       String query = " SELECT *, SUM(incomeSum) FROM income GROUP BY categoryName ORDER BY categoryName";
+      //  String query = " SELECT categoryName, SUM(incomeSum) FROM income GROUP BY categoryName ORDER BY categoryName";
         cursor =  db.rawQuery(query, null);
 
 
@@ -92,7 +93,9 @@ public class ReportActivity extends AppCompatActivity {
 
       //  cursor = db.query("income", new String[] {"categoryName", " SUM(incomeSum)"}, null, null, "categoryName", null, "categoryName");
         // определяем, какие столбцы из курсора будут выводиться в ListView
-        String[] headers = new String[] {"categoryName", "incomeSum"};
+        //String[] headers = new String[] {"name", "sum"};
+       // String[] headers = new String["categoryName","SUM(incomeSum)"];
+        String[] headers = new String[] {"categoryName", "SUM(incomeSum)"};
         // создаем адаптер, передаем в него курсор
         adapter = new SimpleCursorAdapter(this, android.R.layout.two_line_list_item, cursor, headers, new int[]{android.R.id.text1, android.R.id.text2}, 0);
 
