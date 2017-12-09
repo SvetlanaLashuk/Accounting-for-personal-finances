@@ -1,0 +1,60 @@
+<resources>
+    <string name="app_name">My Application</string>
+
+    <!--Activity names-->
+    <string name="name_app">Accounting for personal finances</string>
+    <string name="name_categ">Categories</string>
+    <string name="name_categcard">Category card</string>
+    <string name="name_inc">Incomes</string>
+    <string name="name_inccard">Income card</string>
+    <string name="name_out">Outlay</string>
+    <string name="name_outcard">Outlay card</string>
+    <string name="name_report">Report</string>
+
+    <!--Main activity-->
+    <string name="bkk">Bookkeeping</string>
+    <string name="inc">Incomes</string>
+    <string name="category">Categories</string>
+    <string name="outlay">Outlays</string>
+    <string name="report">Report</string>
+
+    <!--Income activity-->
+    <string name="addi">Add income</string>
+
+    <!--ICard activity-->
+    <string name="savei">Save</string>
+    <string name="deletei">Delete</string>
+    <string name="catinc">Category</string>
+    <string name="chdate">Choose date</string>
+
+    <string name="catout">Category</string>
+
+    <!---Outlay activity-->
+    <string name="addo">Add outlay</string>
+
+
+    <string name="date">Date (yyyy.mm.dd)</string>
+    <string name="sum">Sum</string>
+    <string name="incsource">Income source</string>
+
+    <string name="dateout">Date outlay (yyyy.mm.dd)</string>
+    <string name="sumout">Sum outlay</string>
+
+
+    <!--Category activity-->
+    <string name="addc">Add category</string>
+
+    <!--Category  Card activity-->
+    <string name="cname">Name</string>
+    <string name="ccomment">Comment</string>
+
+
+
+    <string name="saveis">Save</string>
+    <string name="deleteis">Delete</string>
+
+    <!--Report activity-->
+    <string name="incomes">Incomes</string>
+    <string name="outlays">Outlays</string>
+
+</resources>

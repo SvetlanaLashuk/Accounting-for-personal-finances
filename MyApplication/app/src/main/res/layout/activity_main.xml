@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="openIncomes"
+        android:layout_marginBottom="10dp"
+        android:background="#64FFDA"
+        android:text="@string/inc"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="openOutlays"
+        android:layout_marginBottom="10dp"
+        android:background="#1E88E5"
+        android:text="@string/outlay"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="openCategories"
+        android:layout_marginBottom="10dp"
+        android:background="#5C6BC0"
+        android:text="@string/category"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="openReport"
+        android:layout_marginBottom="10dp"
+        android:background="#8E24AA"
+        android:text="@string/report"
+        android:textSize="18sp" />
+
+</LinearLayout>
