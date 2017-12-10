@@ -66,5 +66,10 @@
         android:text="@string/deleteis"
         android:textSize="18sp" />
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ocard"
+        android:contentDescription="@null"/>
 
 </LinearLayout>

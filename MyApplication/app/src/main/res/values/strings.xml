@@ -56,5 +56,10 @@
     <!--Report activity-->
     <string name="incomes">Incomes</string>
     <string name="outlays">Outlays</string>
+    <string name="from">From</string>
+    <string name="to">To</string>
+    <string name="datefrom">From</string>
+    <string name="dateto">To</string>
+    <string name="dreport">Display report</string>
 
 </resources>

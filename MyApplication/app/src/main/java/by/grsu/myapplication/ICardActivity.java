@@ -17,7 +17,9 @@ import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 public class ICardActivity extends AppCompatActivity {
 
@@ -43,7 +45,7 @@ public class ICardActivity extends AppCompatActivity {
         delButton = (Button) findViewById(R.id.button8);
         saveButton = (Button) findViewById(R.id.button7);
         chDate = (Button) findViewById(R.id.button14);
-        //setInitialDateTime();
+        setInitialDateTime();
         adapter = new DatabaseAdapter(this);
 
         String[] queryCols = new String[]{"_id", DatabaseHelper.COLUMN_CATEGORY_NAME};
@@ -75,7 +77,11 @@ public class ICardActivity extends AppCompatActivity {
             adapter.open();
             Income income = adapter.getIncome(incId);
             dateBox.setText(income.getIncomeDate());
-            selectSpinnerItemByValue(spinner, incId);
+
+
+            selectSpinnerItemByValue(spinner, income.getCategoryName());
+
+
             sumBox.setText(String.valueOf(income.getIncomeSum()));
 
 
@@ -85,10 +91,10 @@ public class ICardActivity extends AppCompatActivity {
         }
     }
 
-    public static void selectSpinnerItemByValue(Spinner spnr, long value) {
+    public static void selectSpinnerItemByValue(Spinner spnr, String value) {
         SimpleCursorAdapter adapter = (SimpleCursorAdapter) spnr.getAdapter();
         for (int position = 0; position < adapter.getCount(); position++) {
-            if(adapter.getItemId(position) == value) {
+            if(adapter.getItem(position).equals(value)) {
                 spnr.setSelection(position);
                 return;
             }
@@ -135,23 +141,22 @@ public class ICardActivity extends AppCompatActivity {
 
     // установка начальных даты и времени
     private void setInitialDateTime() {
-
-        dateBox.setText(DateUtils.formatDateTime(this,
-                dateAndTime.getTimeInMillis(),
-                DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_SHOW_YEAR | DateUtils.FORMAT_NUMERIC_DATE ));
-        //| DateUtils.FORMAT_SHOW_TIME));
-
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String date = sdf.format(new Date());
+        dateBox.setText(date);
 
     }
 
     // установка обработчика выбора даты
     DatePickerDialog.OnDateSetListener d=new DatePickerDialog.OnDateSetListener() {
         public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-            dateAndTime.set(Calendar.YEAR, year);
-            dateAndTime.set(Calendar.MONTH, monthOfYear);
-            dateAndTime.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-            String textDateParam = year + "." + (monthOfYear + 1) + "." + dayOfMonth;
-            dateBox.setText(textDateParam);
+            //dateAndTime.set(Calendar.YEAR, year);
+           // dateAndTime.set(Calendar.MONTH, monthOfYear);
+           // dateAndTime.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+           // String textDateParam = year + "." + (monthOfYear + 1) + "." + dayOfMonth;
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            String date = sdf.format(new Date(year-1900, monthOfYear,  dayOfMonth));
+            dateBox.setText(date);
            // setInitialDateTime();
         }
     };

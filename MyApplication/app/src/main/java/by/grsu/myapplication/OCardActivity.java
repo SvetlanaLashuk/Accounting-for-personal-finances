@@ -15,7 +15,9 @@ import android.widget.EditText;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 public class OCardActivity extends AppCompatActivity {
 
@@ -39,6 +41,7 @@ public class OCardActivity extends AppCompatActivity {
         spinner = (Spinner) findViewById(R.id.spinner2);
         deleteO = (Button) findViewById(R.id.button11);
         saveO = (Button) findViewById(R.id.button10);
+        setInitialDateTime();
         adapter = new DatabaseAdapter(this);
 
         String[] queryCols = new String[]{"_id", DatabaseHelper.COLUMN_CATEGORY_NAME};
@@ -70,13 +73,12 @@ public class OCardActivity extends AppCompatActivity {
             adapter.open();
             Outlay outlay = adapter.getOutlay(outId);
             dateoBox.setText(outlay.getOutlayDate());
-            selectSpinnerItemByValue(spinner, outId);
-            sumoBox.setText(String.valueOf(outlay.getOutlaySum()));
 
-            //spinner.setAdapter(income.getCategoryName());
-            //incomesourceBox.setText(income.getIncsname());
-            // spinner.getSelectedItem().toString();
-            //spinner.setSelection(income.getCategoryName());
+
+            selectSpinnerItemByValue(spinner, outlay.getcategoryName());
+
+
+            sumoBox.setText(String.valueOf(outlay.getOutlaySum()));
 
         } else {
             // скрываем кнопку удаления
@@ -84,10 +86,10 @@ public class OCardActivity extends AppCompatActivity {
         }
     }
 
-    public static void selectSpinnerItemByValue(Spinner spnr, long value) {
-        SimpleCursorAdapter adapter = (SimpleCursorAdapter) spnr.getAdapter();
-        for (int position = 0; position < adapter.getCount(); position++) {
-            if(adapter.getItemId(position) == value) {
+    public static void selectSpinnerItemByValue(Spinner spnr, String value) {
+       SimpleCursorAdapter adapter = (SimpleCursorAdapter) spnr.getAdapter();
+        for (int position = 0; position < adapter .getCount(); position++) {
+            if(adapter.getItem(position).equals(value)) {
                 spnr.setSelection(position);
                 return;
             }
@@ -134,24 +136,17 @@ public class OCardActivity extends AppCompatActivity {
 
     // установка начальных даты и времени
     private void setInitialDateTime() {
-
-        dateoBox.setText(DateUtils.formatDateTime(this,
-                dateAndTime.getTimeInMillis(),
-                DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_SHOW_YEAR | DateUtils.FORMAT_NUMERIC_DATE ));
-        //| DateUtils.FORMAT_SHOW_TIME));
-
-
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String date = sdf.format(new Date());
+        dateoBox.setText(date);
     }
 
     // установка обработчика выбора даты
     DatePickerDialog.OnDateSetListener d=new DatePickerDialog.OnDateSetListener() {
         public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-            dateAndTime.set(Calendar.YEAR, year);
-            dateAndTime.set(Calendar.MONTH, monthOfYear);
-            dateAndTime.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-            String textDateParam = year + "." + (monthOfYear + 1) + "." + dayOfMonth;
-            dateoBox.setText(textDateParam);
-            // setInitialDateTime();
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            String date = sdf.format(new Date(year-1900, monthOfYear,  dayOfMonth));
+            dateoBox.setText(date);
         }
     };
 

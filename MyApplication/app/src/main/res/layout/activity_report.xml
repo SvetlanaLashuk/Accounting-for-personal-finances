@@ -5,6 +5,54 @@
     android:layout_margin="10dp"
     android:orientation="vertical">
 
+
+    <Button
+        android:id="@+id/button16"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:text="@string/from"
+        android:onClick="dateFrom"
+        android:textColor="#FFFFFF"
+        android:background="#8E24AA"
+        android:layout_marginBottom="-24dp"/>
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/datefrom"
+        android:layout_marginStart="60dp"
+        android:layout_marginBottom="-24dp"/>
+
+    <Button
+        android:id="@+id/button17"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:text="@string/to"
+        android:onClick="dateTo"
+        android:background="#8E24AA"
+        android:textColor="#FFFFFF"
+        android:layout_marginBottom="-24dp"
+        android:layout_marginStart="180dp"/>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/dateto"
+        android:layout_marginStart="240dp"
+        android:layout_marginBottom="20dp"/>
+
+    <Button
+        android:id="@+id/button18"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:text="@string/dreport"
+        android:onClick="displayReport"
+        android:background="#8E24AA"
+        android:textColor="#FFFFFF"
+        android:layout_marginBottom="5dp"/>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
