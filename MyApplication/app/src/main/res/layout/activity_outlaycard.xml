@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="159dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/dateout"
+        android:layout_marginBottom="-10dp"
+        android:textSize="20sp"/>
+
+    <Button
+        android:id="@+id/button15"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="190dp"
+        android:background="#1E88E5"
+        android:onClick="chooseOutlayDate"
+        android:text="@string/chdate"
+        android:textSize="18sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/catout"
+        android:textSize="18sp"
+        android:layout_marginBottom="30dp"/>
+
+    <Spinner
+        android:id="@+id/spinner2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:spinnerMode="dialog"/>
+
+    <EditText
+        android:id="@+id/editText6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/sumout"
+        android:layout_marginBottom="25dp"
+        android:inputType="numberDecimal" />
+
+    <Button
+        android:id="@+id/button10"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="-50dp"
+        android:background="#1E88E5"
+        android:text="@string/saveis"
+        android:textSize="18sp"
+        android:onClick="saveOutlay" />
+
+    <Button
+        android:id="@+id/button11"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="190dp"
+        android:background="#1E88E5"
+        android:onClick="deleteOutlay"
+        android:text="@string/deleteis"
+        android:textSize="18sp"
+        android:layout_marginBottom="10dp"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ocard"
+        android:contentDescription="@null"
+        android:scaleType="fitCenter"/>
+
+</LinearLayout>

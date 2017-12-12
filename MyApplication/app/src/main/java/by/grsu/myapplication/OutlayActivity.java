@@ -27,7 +27,7 @@ public class OutlayActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Outlay outlay =arrayAdapter.getItem(position);
                 if(outlay!=null) {
-                    Intent intent = new Intent(getApplicationContext(), OCardActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), OutlayCardActivity.class);
                     intent.putExtra("id", outlay.getId());
                     intent.putExtra("click", 25);
                     startActivity(intent);
@@ -51,7 +51,7 @@ public class OutlayActivity extends AppCompatActivity {
 
     public void addOutlay(View view) {
         // Создаем объект Intent для вызова новой Activity
-        Intent intent = new Intent(this, OCardActivity.class);
+        Intent intent = new Intent(this, OutlayCardActivity.class);
         // запуск activity
         startActivity(intent);
     }

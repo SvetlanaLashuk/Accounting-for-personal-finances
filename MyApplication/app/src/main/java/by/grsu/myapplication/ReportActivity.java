@@ -49,16 +49,18 @@ public class ReportActivity extends AppCompatActivity {
         String d1 = fromTextView.getText().toString();
         String d2 = toTextView.getText().toString();
         db = databaseHelper.getReadableDatabase();
-        String incQuery = " SELECT *, SUM(incomeSum) FROM income WHERE incomeDate BETWEEN '"+ d1 +"' AND '" + d2 + "' GROUP BY categoryName ORDER BY categoryName";
+
+        String incQuery = " SELECT *, SUM(" + DatabaseHelper.COLUMN_INCOME_SUM + ") FROM " + DatabaseHelper.TABLE_INCOME + " WHERE " + DatabaseHelper.COLUMN_INCOME_DATE + " BETWEEN '"+ d1 +"' AND '" + d2 + "' GROUP BY " + DatabaseHelper.COLUMN_NAME_CATEGORY + " ORDER BY " + DatabaseHelper.COLUMN_NAME_CATEGORY;
         incCursor =  db.rawQuery(incQuery, null);
-        String[] headers = new String[] {"categoryName", "SUM(incomeSum)"};
+        String[] headers = new String[] {DatabaseHelper.COLUMN_NAME_CATEGORY, "SUM("+DatabaseHelper.COLUMN_INCOME_SUM+")"};
         // создаем адаптер, передаем в него курсор
         incAdapter = new SimpleCursorAdapter(this, android.R.layout.two_line_list_item, incCursor, headers, new int[]{android.R.id.text1, android.R.id.text2}, 0);
         incReport.setAdapter(incAdapter);
 
-        String outQuery = " SELECT *, SUM(outlaySum) FROM outlay WHERE outlayDate BETWEEN '"+ d1 +"' AND '" + d2 + "' GROUP BY categoryName ORDER BY categoryName";
+
+        String outQuery = " SELECT *, SUM(" + DatabaseHelper.COLUMN_OUTLAY_SUM + ") FROM " + DatabaseHelper.TABLE_OUTLAY + " WHERE " + DatabaseHelper.COLUMN_OUTLAY_DATE + " BETWEEN '"+ d1 +"' AND '" + d2 + "' GROUP BY " + DatabaseHelper.COLUMN_TYPE_CATEGORY + " ORDER BY " + DatabaseHelper.COLUMN_TYPE_CATEGORY;
         outCursor =  db.rawQuery(outQuery, null);
-        String[] header = new String[] {"categoryName", "SUM(outlaySum)"};
+        String[] header = new String[] {DatabaseHelper.COLUMN_TYPE_CATEGORY, "SUM("+DatabaseHelper.COLUMN_OUTLAY_SUM+")"};
         // создаем адаптер, передаем в него курсор
         outAdapter = new SimpleCursorAdapter(this, android.R.layout.two_line_list_item, outCursor, header, new int[]{android.R.id.text1, android.R.id.text2}, 0);
         outReport.setAdapter(outAdapter);
@@ -67,18 +69,6 @@ public class ReportActivity extends AppCompatActivity {
     @Override
     public void onResume() {
         super.onResume();
-
-
-      /*  String query = " SELECT " + DatabaseHelper.COLUMN_NAME_CATEGORY + " , "
-                + " SUM("+ DatabaseHelper.COLUMN_INCOME_SUM + ") AS SUM"
-                + " FROM " + DatabaseHelper. TABLE_INCOME
-                //+ " WHERE " + DatabaseHelper.COLUMN_INCOME_DATE
-                + " GROUP BY " + DatabaseHelper.COLUMN_NAME_CATEGORY
-               + " ORDER BY " + DatabaseHelper.COLUMN_NAME_CATEGORY
-
-     ;*/
-
-
     }
 
     @Override
@@ -109,21 +99,10 @@ public class ReportActivity extends AppCompatActivity {
     // отображаем диалоговое окно для выбора даты
     public void dateFrom(View view){
         DPicker();
-        /*new DatePickerDialog(ReportActivity.this, d,
-                dateAndTime.get(Calendar.YEAR),
-                dateAndTime.get(Calendar.MONTH),
-                dateAndTime.get(Calendar.DAY_OF_MONTH))
-                .show();*/
 
     }
 
     public void dateTo(View view){
-
-       /* new DatePickerDialog(ReportActivity.this, d,
-                dateAndTime.get(Calendar.YEAR),
-                dateAndTime.get(Calendar.MONTH),
-                dateAndTime.get(Calendar.DAY_OF_MONTH))
-                .show();*/
         DatPicker();
 
     }
@@ -139,29 +118,18 @@ public class ReportActivity extends AppCompatActivity {
     // установка обработчика выбора даты
     DatePickerDialog.OnDateSetListener d=new DatePickerDialog.OnDateSetListener() {
         public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-            //dateAndTime.set(Calendar.YEAR, year);
-            // dateAndTime.set(Calendar.MONTH, monthOfYear);
-            // dateAndTime.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-            // String textDateParam = year + "." + (monthOfYear + 1) + "." + dayOfMonth;
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             String date = sdf.format(new Date(year-1900, monthOfYear,  dayOfMonth));
             fromTextView.setText(date);
-           // toTextView.setText(date);
-            // setInitialDateTime();
         }
     };
 
     DatePickerDialog.OnDateSetListener dp=new DatePickerDialog.OnDateSetListener() {
         public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-            //dateAndTime.set(Calendar.YEAR, year);
-            // dateAndTime.set(Calendar.MONTH, monthOfYear);
-            // dateAndTime.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-            // String textDateParam = year + "." + (monthOfYear + 1) + "." + dayOfMonth;
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             String date = sdf.format(new Date(year-1900, monthOfYear,  dayOfMonth));
-           // fromTextView.setText(date);
+
             toTextView.setText(date);
-            // setInitialDateTime();
         }
     };
 }

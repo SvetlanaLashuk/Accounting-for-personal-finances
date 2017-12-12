@@ -23,13 +23,13 @@
             android:label="@string/name_categcard"/>
         <activity android:name=".IncomeActivity"
             android:label="@string/name_inc"/>
-        <activity android:name=".ICardActivity"
+        <activity android:name=".IncomeCardActivity"
             android:label="@string/name_inccard"/>
         <activity android:name=".OutlayActivity"
             android:label="@string/name_out"/>
         <activity android:name=".ReportActivity"
             android:label="@string/name_report"/>
-        <activity android:name=".OCardActivity"
+        <activity android:name=".OutlayCardActivity"
             android:label="@string/name_outcard"></activity>
     </application>
 

@@ -67,15 +67,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     // Не удаляем категории
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion,  int newVersion) {
-        /*if(oldVersion == 0 && newVersion == 2) {
-            db.execSQL("DROP TABLE IF EXISTS "+TABLE_INCOME);
-            db.execSQL("DROP TABLE IF EXISTS "+TABLE_OUTLAY);
-        }
-        else {*/
             db.execSQL("DROP TABLE IF EXISTS "+TABLE_CATEGORY);
             db.execSQL("DROP TABLE IF EXISTS "+TABLE_INCOME);
             db.execSQL("DROP TABLE IF EXISTS "+TABLE_OUTLAY);
-        //}
         onCreate(db);
     }
 

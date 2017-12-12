@@ -27,7 +27,7 @@ public class IncomeActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Income income =arrayAdapter.getItem(position);
                 if(income!=null) {
-                    Intent intent = new Intent(getApplicationContext(), ICardActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), IncomeCardActivity.class);
                     intent.putExtra("id", income.getId());
                     intent.putExtra("click", 25);
                     startActivity(intent);
@@ -51,7 +51,7 @@ public class IncomeActivity extends AppCompatActivity {
 
     public void addIncome(View view) {
         // Создаем объект Intent для вызова новой Activity
-        Intent intent = new Intent(this, ICardActivity.class);
+        Intent intent = new Intent(this, IncomeCardActivity.class);
         // запуск activity
         startActivity(intent);
     }

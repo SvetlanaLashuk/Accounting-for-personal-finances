@@ -33,11 +33,11 @@
     <string name="addo">Add outlay</string>
 
 
-    <string name="date">Date (yyyy.mm.dd)</string>
+    <string name="date">Date</string>
     <string name="sum">Sum</string>
     <string name="incsource">Income source</string>
 
-    <string name="dateout">Date outlay (yyyy.mm.dd)</string>
+    <string name="dateout">Date outlay</string>
     <string name="sumout">Sum outlay</string>
 
 
